@@ -1,0 +1,34 @@
+version: "2"
+
+services:
+
+  weather_server:
+    container_name: weather_server
+    build: ./server/
+    working_dir: /server/
+    command: java -jar weatherServer.jar 
+    ports:
+      - ${PORT}:9898
+    depends_on:
+      - weather_db
+    networks:
+      - my_network
+  
+  weather_db:
+    container_name: weather_db
+    image: postgres:12.11
+    restart: always
+    ports: 
+    - '5432:5432'
+    environment:
+      POSTGRES_DB: "WSS"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "1029"
+    volumes:
+      - ./database/database.sql:/docker-entrypoint-initdb.d/database.sql
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge

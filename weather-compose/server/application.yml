@@ -1,0 +1,19 @@
+server:
+  name: wss-server
+  port: 9898
+
+springdoc:
+  swagger-ui:
+    operations-sorter: method
+    tags-sorter: alpha
+
+spring:
+  datasource:
+    username: postgres
+    password: 1029
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://weather_db:5432/WSS
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  
