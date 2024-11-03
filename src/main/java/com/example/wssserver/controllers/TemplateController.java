@@ -1,5 +1,6 @@
 package com.example.wssserver.controllers;
 
+import com.example.wssserver.data.devices.Devices;
 import com.example.wssserver.data.tamplate.Template;
 import com.example.wssserver.services.DevicesService;
 import com.example.wssserver.services.TemplateService;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -41,16 +43,12 @@ public class TemplateController {
         if (template.isPresent()) {
             Template updatedTemplate = template.get();
             updatedTemplate.setScene(newTemplate.getScene());
-
             updatedTemplate.setTime(newTemplate.getTime());
-
             updatedTemplate.setVideo(newTemplate.getVideo());
-
             updatedTemplate.setVoice(newTemplate.getVoice());
-
             updatedTemplate.setWeather(newTemplate.getWeather());
 
-            return ResponseEntity.ok(templateService.save(updatedTemplate));
+            return ResponseEntity.ok(templateService.saveCurrent(updatedTemplate));
         } else {
             return ResponseEntity.notFound().build();
         }

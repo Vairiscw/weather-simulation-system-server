@@ -22,6 +22,11 @@ public class TemplateService {
     }
 
     public Template save(Template template) {
+        template.setId(null);
+        return templateRepository.save(template);
+    }
+
+    public Template saveCurrent(Template template) {
         return templateRepository.save(template);
     }
 
