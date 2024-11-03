@@ -18,7 +18,7 @@ public class TemplateController {
     @Autowired
     TemplateService templateService;
     @Autowired
-    DevicesService devicesService;
+    DevicesController devicesController;
 
     @GetMapping
     public List<Template> getAllTemplates() {
@@ -48,6 +48,7 @@ public class TemplateController {
             updatedTemplate.setVoice(newTemplate.getVoice());
             updatedTemplate.setWeather(newTemplate.getWeather());
 
+            devicesController.setDevices(updatedTemplate);
             return ResponseEntity.ok(templateService.saveCurrent(updatedTemplate));
         } else {
             return ResponseEntity.notFound().build();
