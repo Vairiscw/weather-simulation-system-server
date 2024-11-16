@@ -364,7 +364,7 @@ INSERT INTO devices (id, name, state) VALUES
 
 -- Вставка данных в таблицу scenes
 INSERT INTO scenes (id, designation) VALUES
-(1, 'Сад камней');
+(1, 'stone_garden');
 
 -- Вставка данных в таблицу templates
 INSERT INTO templates (id, author, name, scene, "time", video, voice, weather) VALUES
@@ -374,25 +374,25 @@ INSERT INTO templates (id, author, name, scene, "time", video, voice, weather) V
 
 -- Вставка данных в таблицу times
 INSERT INTO times (id, designation) VALUES
-(1, 'День'),
-(2, 'Ночь');
+(1, 'day'),
+(2, 'night');
 
 -- Вставка данных в таблицу videos
 INSERT INTO videos (id, designation) VALUES
-(1, 'Замок');
+(1, 'castle');
 
 -- Вставка данных в таблицу voices
 INSERT INTO voices (id, designation) VALUES
-(1, 'Сверчки'),
-(2, 'Вода'),
-(3, 'Птицы'),
-(4, 'Камин');
+(1, 'crickets'),
+(2, 'water'),
+(3, 'birds'),
+(4, 'fireplace');
 
 -- Вставка данных в таблицу weathers
 INSERT INTO weathers (id, designation) VALUES
-(1, 'Ясно'),
-(2, 'Дождь'),
-(3, 'Облачно');
+(1, 'sunny'),
+(2, 'rain'),
+(3, 'cloudy');
 
 
 --

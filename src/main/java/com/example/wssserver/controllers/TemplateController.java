@@ -1,6 +1,7 @@
 package com.example.wssserver.controllers;
 
 import com.example.wssserver.data.devices.Devices;
+import com.example.wssserver.data.tamplate.CompressedTemplate;
 import com.example.wssserver.data.tamplate.Template;
 import com.example.wssserver.services.DevicesService;
 import com.example.wssserver.services.TemplateService;
@@ -34,6 +35,13 @@ public class TemplateController {
     @PostMapping
     public Template addTemplate(@RequestBody Template template) {
         return templateService.save(template);
+    }
+
+    @GetMapping("/current")
+    public ResponseEntity<CompressedTemplate> getCurrentTemplate() {
+        Optional<Template> template = templateService.findById(1L);
+        Optional<CompressedTemplate> currentTemplate = Optional.of(new CompressedTemplate(template.get().getScene(), template.get().getTime(), template.get().getVideo(), template.get().getVoice(), template.get().getWeather()));
+        return currentTemplate.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     //В put будет прописано также взаимодействие с устройствами
